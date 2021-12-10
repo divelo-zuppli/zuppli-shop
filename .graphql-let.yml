@@ -1,4 +1,4 @@
-schema: http://zuppli-api-dev.herokuapp.com/graphql
+schema: http://google.com/graphql
 documents: ./src/framework/graphql/**/*.graphql
 plugins:
   - typescript-operations
