@@ -1,0 +1,6 @@
+schema: http://zuppli-api-dev.herokuapp.com/graphql
+documents: ./src/framework/graphql/**/*.graphql
+plugins:
+  - typescript-operations
+  - typescript-react-apollo
+cacheDir: __generated__

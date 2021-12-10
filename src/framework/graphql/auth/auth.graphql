@@ -83,8 +83,8 @@ mutation Register($name: String!, $email: String!, $password: String!) {
   }
 }
 
-mutation ChangePassword($input: ChangePasswordInput!) {
-  changePassword(input: $input) {
+mutation ChangeUserPassword($input: ChangePasswordInput!) {
+  changeUserPassword(input: $input) {
     message
     success
   }

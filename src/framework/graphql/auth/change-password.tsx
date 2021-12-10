@@ -15,11 +15,11 @@ const ChangePassword = () => {
     resolver: yupResolver(changePasswordSchema),
   });
 
-  const [changePassword, { loading }] = useChangePasswordMutation();
+  const [changeUserPassword, { loading }] = useChangePasswordMutation();
 
   async function onSubmit({ newPassword, oldPassword }: FormValues) {
     // alert('Sorry the mutation is disable for demo!');
-    const { data } = await changePassword({
+    const { data } = await changeUserPassword({
       variables: {
         input: {
           newPassword,
@@ -27,10 +27,10 @@ const ChangePassword = () => {
         },
       },
     });
-    if (!data?.changePassword?.success) {
+    if (!data?.changeUserPassword?.success) {
       methods.setError('oldPassword', {
         type: 'manual',
-        message: data?.changePassword?.message ?? '',
+        message: data?.changeUserPassword?.message ?? '',
       });
     } else {
       toast.success(t('password-successful'));

@@ -95,7 +95,7 @@ export declare type ChangePasswordMutationVariables = Types.Exact<{
 }>;
 export declare type ChangePasswordMutation = {
   __typename?: 'Mutation';
-  changePassword: {
+  changeUserPassword: {
     __typename?: 'PasswordChangeResponse';
     message: string;
     success: boolean;
