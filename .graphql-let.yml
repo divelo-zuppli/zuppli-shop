@@ -1,4 +1,4 @@
-schema: http://google.com/graphql
+schema: `${NEXT_PUBLIC_GRAPHQL_API_ENDPOINT}`
 documents: ./src/framework/graphql/**/*.graphql
 plugins:
   - typescript-operations
