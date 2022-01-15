@@ -25,12 +25,14 @@ query Categories(
   $limit: Int
   $skip: Int
   $q: String
+  $onlyRoots: Boolean
 ) {
   getAllCategories(
     getAllCategoriesInput: {
       limit: $limit,
       skip: $skip,
-      q: $q
+      q: $q,
+      onlyRoots: $onlyRoots
     }
   ) {
     id

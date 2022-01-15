@@ -37,6 +37,7 @@ const Categories: React.FC<{ layout: string; className?: string }> = ({
       type: (pages?.[0] as string) ?? homePage?.slug,
       limit: 1000,
       ...(layout === 'minimal' ? {} : { parent: null }),
+      onlyRoots: true,
     }),
   });
 

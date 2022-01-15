@@ -14,6 +14,7 @@ export interface IGetCategory {
   page?: number;
   orderField?: QueryCategoriesOrderByColumn;
   sortOrder?: SortOrder;
+  onlyRoots?: Maybe<boolean> | undefined;
 }
 
 export const getCategories = ({
@@ -24,6 +25,7 @@ export const getCategories = ({
   page = 1,
   orderField,
   sortOrder = SortOrder.Desc,
+  onlyRoots,
 }: IGetCategory) => {
   return {
     ...(type && {
@@ -38,5 +40,6 @@ export const getCategories = ({
     ...(parent !== undefined && { parent }),
     page,
     first: limit,
+    onlyRoots,
   };
 };
