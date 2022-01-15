@@ -9,11 +9,6 @@ query Settings {
         title
         description
       }
-      logo {
-        id
-        thumbnail
-        original
-      }
       taxClass
       shippingClass
       contactDetails {
@@ -38,11 +33,6 @@ query Settings {
         metaDescription
         ogTitle
         ogDescription
-        ogImage {
-          id
-          thumbnail
-          original
-        }
         twitterHandle
         twitterCardType
         metaTags

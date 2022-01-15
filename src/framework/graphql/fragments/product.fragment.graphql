@@ -17,9 +17,9 @@ fragment ProductParts on Product {
   max_price
   quantity
   unit
-  image {
-    id
-    thumbnail
-    original
-  }
+  #  image {
+  #    id
+  #    original
+  #    thumbnail
+  #  }
 }

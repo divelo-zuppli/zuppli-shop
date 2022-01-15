@@ -42,7 +42,7 @@ export const getProducts = ({
     ...(text && { text: `%${text}%` }),
     ...(category && {
       hasCategories: {
-        column: QueryCategoriesHasTypeColumn.Slug,
+        column: 'SLUG', // QueryCategoriesHasTypeColumn.Slug,
         operator: SqlOperator.Eq,
         value: category ?? null,
       },

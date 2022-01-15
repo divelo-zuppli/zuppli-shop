@@ -7,11 +7,11 @@ query Groups($text: String, $orderBy: [QueryTypesOrderByOrderByClause!]) {
     banners {
       id
       title
-      image {
-        id
-        original
-        thumbnail
-      }
+      #  image {
+      #    id
+      #    original
+      #    thumbnail
+      #  }
     }
     settings {
       isHome
@@ -28,16 +28,17 @@ query Group($id: ID, $slug: String) {
       id
       title
       description
-      image {
-        id
-        original
-        thumbnail
-      }
+      #  image {
+      #    id
+      #    original
+      #    thumbnail
+      #  }
+      
     }
-    promotional_sliders {
-      id
-      thumbnail
-      original
-    }
+    #  promotional_sliders {
+    #    id
+    #    thumbnail
+    #    original
+    #  }
   }
 }

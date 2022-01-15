@@ -47,10 +47,10 @@ mutation CreateRefund($input: CreateRefundInput!) {
     id
     title
     description
-    images {
-      thumbnail
-      original
-      id
-    }
+    #  image {
+    #    id
+    #    original
+    #    thumbnail
+    #  }
   }
 }

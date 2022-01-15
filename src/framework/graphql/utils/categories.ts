@@ -28,7 +28,7 @@ export const getCategories = ({
   return {
     ...(type && {
       hasType: {
-        column: QueryCategoriesHasTypeColumn.Slug,
+        column: 'SLUG', // QueryCategoriesHasTypeColumn.Slug,
         operator: SqlOperator.Eq,
         value: type,
       },

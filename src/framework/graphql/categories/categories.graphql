@@ -2,45 +2,64 @@ fragment CategoryParts on Category {
   id
   name
   slug
-  details
-  parent_id
-  products_count
-  image {
-    id
-    original
-    thumbnail
-  }
-  icon
-  type {
+  parent {
     id
     name
     slug
   }
+  # products_count
+  
+  attatchments {
+    uid
+    type
+    url
+  }
+  
+  # icon
 }
 query Categories(
-  $orderBy: [QueryCategoriesOrderByOrderByClause!]
-  $hasType: QueryCategoriesHasTypeWhereHasConditions
-  $name: String
-  $first: Int = 2
-  $page: Int
-  $parent: ID
+  # $name: String
+  # $first: Int = 2
+  # $page: Int
+  # $parent: ID
+  $limit: Int
+  $skip: Int
+  $q: String
 ) {
-  categories(
-    hasType: $hasType
-    orderBy: $orderBy
-    name: $name
-    first: $first
-    page: $page
-    parent: $parent
-  ) {
-    data {
-      ...CategoryParts
-      children {
-        ...CategoryParts
-        children {
-          ...CategoryParts
-        }
-      }
+  getAllCategories(
+    getAllCategoriesInput: {
+      limit: $limit,
+      skip: $skip,
+      q: $q
     }
-  }
+  ) {
+    id
+    name
+    slug
+    parent {
+        id
+        name
+        slug
+    }
+    children {
+        id
+        name
+        slug
+        parent {
+            id
+            name
+            slug
+        }
+        children {
+            id
+            name
+            slug
+            parent {
+                id
+                name
+                slug
+            }
+        }
+    }
+}
 }

@@ -16,17 +16,7 @@ fragment ShopParts on Shop {
     name
     email
   }
-  description
-  logo {
-    id
-    thumbnail
-    original
-  }
-  cover_image {
-    id
-    thumbnail
-    original
-  }
+  description  
   orders_count
   products_count
   is_active

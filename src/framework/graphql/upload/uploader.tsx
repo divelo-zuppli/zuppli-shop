@@ -1,7 +1,7 @@
 import { UploadIcon } from '@components/icons/upload-icon';
 import { useEffect, useState, useCallback } from 'react';
 import { useDropzone, FileWithPath } from 'react-dropzone';
-import { useUploadMutation } from '@framework/upload/upload.graphql';
+// import { useUploadMutation } from '@framework/upload/upload.graphql';
 import Spinner from '@components/ui/loaders/spinner/spinner';
 import { useTranslation } from 'next-i18next';
 
@@ -23,7 +23,7 @@ export default function Uploader({
 }: any) {
   const { t } = useTranslation('common');
   const [files, setFiles] = useState<FileWithPath[]>(getPreviewImage(value));
-  const [upload, { loading }] = useUploadMutation();
+  const [upload, { loading }] = [({ variables: {} }) => Promise.resolve({ data: { upload: [] } }), { loading: false }];
   const onDrop = useCallback(
     async (acceptedFiles) => {
       try {
@@ -45,7 +45,7 @@ export default function Uploader({
       setFiles(
         acceptedFiles.map((file: object) =>
           Object.assign(file, {
-            preview: URL.createObjectURL(file),
+            preview: URL.createObjectURL(file as any),
           })
         )
       );

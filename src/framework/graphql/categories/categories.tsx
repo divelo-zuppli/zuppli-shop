@@ -40,14 +40,16 @@ const Categories: React.FC<{ layout: string; className?: string }> = ({
     }),
   });
 
+  console.log('data', data);
+
   if (error) return <ErrorMessage message={error.message} />;
   const Component = layout
     ? MAP_CATEGORY_TO_GROUP[layout]
     : MAP_CATEGORY_TO_GROUP['default'];
   return (
     <Component
-      notFound={!Boolean(data?.categories?.data?.length)}
-      categories={data?.categories?.data}
+      notFound={!Boolean(data?.getAllCategories?.length)}
+      categories={data?.getAllCategories}
       loading={loading}
       className={className}
     />

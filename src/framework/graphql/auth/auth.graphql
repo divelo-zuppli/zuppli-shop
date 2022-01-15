@@ -15,8 +15,8 @@ mutation SocialLogin($provider: String!, $accessToken: String!) {
 mutation SendOtpCode($phoneNumber: String!) {
   sendOtpCode(input: { phone_number: $phoneNumber }) {
     id
-    message
-    success
+    # message
+    # success
     provider
     phone_number
     is_contact_exist
@@ -27,8 +27,8 @@ mutation VerifyOtpCode($otpId: String!, $code: String!, $phoneNumber: String!) {
   verifyOtpCode(
     input: { otp_id: $otpId, code: $code, phone_number: $phoneNumber }
   ) {
-    message
     success
+    message
   }
 }
 
@@ -83,30 +83,27 @@ mutation Register($name: String!, $email: String!, $password: String!) {
   }
 }
 
-mutation ChangeUserPassword($input: ChangePasswordInput!) {
-  changeUserPassword(input: $input) {
-    message
-    success
-  }
-}
-
-mutation ForgetPassword($input: ForgetPasswordInput!) {
-  forgetPassword(input: $input) {
-    message
-    success
-  }
-}
-mutation VerifyForgetPasswordToken($input: VerifyForgetPasswordTokenInput!) {
-  verifyForgetPasswordToken(input: $input) {
-    message
-    success
-  }
-}
-mutation ResetPassword($input: ResetPasswordInput!) {
-  resetPassword(input: $input) {
-    message
-    success
-  }
+mutation ChangeUserPassword (
+    $authUid: String!,
+    $oldPassword: String!,
+    $newPassword: String!
+) {
+    changeUserPassword (
+        changeUserPasswordInput: {
+            authUid: $authUid,
+            newPassword: $newPassword,
+            oldPassword: $oldPassword
+        }
+    ) {
+        id,
+        uid,
+        authUid,
+        email,
+        phoneNumber,
+        fullName,
+        createdAt,
+        updatedAt
+    }
 }
 
 mutation UpdateCustomer($input: UpdateUserInput!) {
@@ -116,11 +113,11 @@ mutation UpdateCustomer($input: UpdateUserInput!) {
     email
     profile {
       id
-      avatar {
-        id
-        thumbnail
-        original
-      }
+      # avatar {
+      #   id
+      #   thumbnail
+      #   original
+      # }
       bio
       socials {
         type
@@ -149,11 +146,11 @@ query Customer {
     email
     profile {
       id
-      avatar {
-        id
-        thumbnail
-        original
-      }
+      # avatar {
+      #   id
+      #   thumbnail
+      #   original
+      # }
       bio
       socials {
         type

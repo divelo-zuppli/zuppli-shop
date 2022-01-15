@@ -18,11 +18,11 @@ fragment OrderParts on Order {
     price
     sale_price
     created_at
-    image {
-      id
-      original
-      thumbnail
-    }
+    #  image {
+    #    id
+    #    original
+    #    thumbnail
+    #  }
     variation_options {
       id
       title

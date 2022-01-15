@@ -38,21 +38,23 @@ query Product($id: ID, $slug: String) {
       slug
     }
     description
-    categories {
-      id
-      name
-      slug
-      children {
-        id
-        name
-        slug
-      }
-    }
-    gallery {
-      id
-      thumbnail
-      original
-    }
+
+    # categories {
+    #   id
+    #   name
+    #   slug
+    #   children {
+    #     id
+    #     name
+    #     slug
+    #   }
+    # }
+
+    # gallery {
+    #   id
+    #   thumbnail
+    #   original
+    # }
     variations {
       id
       value

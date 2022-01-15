@@ -30,11 +30,13 @@ query Coupons($first: Int!, $page: Int) {
       code
       description
       type
-      image {
-        id
-        original
-        thumbnail
-      }
+      
+      #  image {
+      #    id
+      #    original
+      #    thumbnail
+      #  }
+
       amount
       active_from
       expire_at
