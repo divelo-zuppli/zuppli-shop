@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAuth, signInWithCustomToken } from "firebase/auth";
+import { getAuth, signInWithCustomToken, signInWithEmailAndPassword } from "firebase/auth";
 
 import environment from "../../environment";
 import { setFirebaseProviderId } from "../../utils";
@@ -41,6 +41,18 @@ class AuthService {
     const auth = getAuth(firebaseApp);
 
     const userCredential = await signInWithCustomToken(auth, customToken);
+
+    const { providerId } = userCredential;
+
+    if (providerId) setFirebaseProviderId(providerId);
+  }
+
+  async login({ email, password }) {
+    const auth = getAuth(firebaseApp);
+
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+
+    console.log('userCredential', userCredential);
 
     const { providerId } = userCredential;
 
