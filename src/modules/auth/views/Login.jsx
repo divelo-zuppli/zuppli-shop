@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import authService from '../auth.service';
 
@@ -43,6 +43,20 @@ function Login() {
         }
     };
 
+    const loginWithGoogle = async (event) => {
+        event.preventDefault();
+
+        setMessage("");
+
+        try {
+            await authService.loginWithGoogle();
+
+            // setMessage(message);
+        } catch (error) {
+            setMessage(`error: ${error.message}`);
+        }
+    };
+
     return (
         <div>
             <h3> Login with email n password </h3>
@@ -64,9 +78,10 @@ function Login() {
                 <button type="submit"> GO </button>
             </form>
             <br />
-            <button>GOOGLE</button>
+            <button onClick={loginWithGoogle}>GOOGLE</button>
             <br />
-            <button>OTP</button>
+            <br />
+            <Link to="/otp" style={{ padding: 5 }}> OTP </Link>
             {message && <div><p>{message}</p></div>}
         </div>
     );

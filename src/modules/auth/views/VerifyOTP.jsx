@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import authService from '../auth.service';
 
@@ -104,6 +104,8 @@ const VerifyOTP = () => {
                 verifyOTPMessage &&
                 <div><p>{verifyOTPMessage}</p></div>
             }
+            <br />
+            <Link to="/otp" style={{ padding: 5 }}> OTP </Link>
         </div>
     );
 }

@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import authService from '../auth.service';
 
@@ -100,6 +100,8 @@ function SendOTP() {
                 <button type="submit"> Send OTP </button>
             </form>
             {sendOTPMessage && <div><p>{sendOTPMessage}</p></div>}
+            <br />
+            <Link to="/otp" style={{ padding: 5 }}> OTP </Link>
         </div>
     );
 }
