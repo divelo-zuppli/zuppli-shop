@@ -13,6 +13,8 @@ import { setFirebaseProviderId } from "../../utils";
 
 import firebaseApp from "../../firebase";
 
+import userService from '../user/user.service'
+
 class AuthService {
   constructor() {
     this.googleAuthProvider = new GoogleAuthProvider();
@@ -93,23 +95,22 @@ class AuthService {
     const { user } = userCredential;
 
     if (isNewUser) {
-      console.log('NEW USER');
-      /*
+      // console.log('NEW USER');
+
       const authUid = user.uid;
       const email = user.email;
       const fullName = additionalUserInfo.profile.name || user.displayName;
-      const phone = user.phoneNumber || null;
+      const phoneNumber = user.phoneNumber || null;
 
-      await this.registerFromAuthUid({
+      await userService.registerFromAuthUid({
         authUid,
         email,
         fullName,
-        phone
+        phoneNumber,
       });
-      */
     }
 
-    console.log('LOGIN WITH GOOGLE RESULT', userCredential);
+    // console.log('LOGIN WITH GOOGLE RESULT', userCredential);
 
     const { providerId } = userCredential;
 

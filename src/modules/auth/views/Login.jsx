@@ -54,6 +54,8 @@ function Login() {
             // setMessage(message);
         } catch (error) {
             setMessage(`error: ${error.message}`);
+            console.error(error);
+            await authService.logout();
         }
     };
 
