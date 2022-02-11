@@ -12,6 +12,7 @@ import SendOTP from "./modules/auth/views/SendOTP";
 import VerifyOTP from "./modules/auth/views/VerifyOTP";
 import Home from "./modules/main/views/Home";
 import OTP from "./modules/auth/views/OTP";
+import Header from "./components/Header";
 
 export const GlobalContext = React.createContext();
 
@@ -28,6 +29,7 @@ const App = () => {
     <div className="App">
       <GlobalContext.Provider value={{ user }}>
         <Router>
+          <Header user={user}/>
           <nav style={{ margin: 10 }}>
             <Link to="/login" style={{ padding: 5 }}>
               Login
