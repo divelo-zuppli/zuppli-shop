@@ -6,13 +6,16 @@ import "./App.css";
 
 import firebaseApp from "./firebase";
 
+import Header from "./components/Header";
+
 import LoggedOut from "./modules/auth/views/LoggedOut";
 import Login from "./modules/auth/views/Login";
 import SendOTP from "./modules/auth/views/SendOTP";
 import VerifyOTP from "./modules/auth/views/VerifyOTP";
 import Home from "./modules/main/views/Home";
 import OTP from "./modules/auth/views/OTP";
-import Header from "./components/Header";
+import Register from "./modules/user/views/Register";
+
 
 export const GlobalContext = React.createContext();
 
@@ -41,6 +44,7 @@ const App = () => {
           </nav>
           <Routes>
             <Route path="/" element={<LoggedOut />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/otp" element={<OTP />} />
             <Route path="/otp/send" element={<SendOTP />} />

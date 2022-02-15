@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi'
 
 const Header = ({ user }) => {
+  console.log('user', user);
 
   return (
     <Container>
@@ -18,7 +19,7 @@ const Header = ({ user }) => {
         <CartTrigger cartItems={1} />
         <Link to={!user ? "/login" : "/profile"} className='link'>
           <FiUser size={26} />
-          <span>{!user ? "Ingresar" : `¡Hola, ${user.displayName.split(" ")[0]}!`}</span>
+          <span>{!user ? "Ingresar" : `${user.displayName ? '¡Hola, ' + user.displayName.split(" ")[0] + '!' : '¡Hola!'}`}</span>
         </Link>
       </div>
     </Container>
