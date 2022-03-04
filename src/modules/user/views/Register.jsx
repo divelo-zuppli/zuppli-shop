@@ -1,12 +1,14 @@
 import { useState, useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-
-import authService from '../auth.service';
+import { useNavigate } from "react-router-dom";
 
 import { GlobalContext } from '../../../App';
 
+import userService from "../user.service";
+
 function Login() {
+    const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
 
@@ -21,48 +23,40 @@ function Login() {
         }
     }, [navigate, user]);
 
-    const login = async (event) => {
+    const register = async (event) => {
         event.preventDefault();
 
         setMessage("");
 
         if (!email || !password) {
-            setMessage("error: Please fill all fields");
+            setMessage("error: Please fill all required fields");
             return;
         }
 
         try {
-            await authService.login({
+            const result = await userService.register({
+                fullName,
                 email,
+                phoneNumber,
                 password,
             });
 
-            // setMessage(message);
+            setMessage(result.message);
         } catch (error) {
             setMessage(`error: ${error.message}`);
-        }
-    };
-
-    const loginWithGoogle = async (event) => {
-        event.preventDefault();
-
-        setMessage("");
-
-        try {
-            await authService.loginWithGoogle();
-
-            // setMessage(message);
-        } catch (error) {
-            setMessage(`error: ${error.message}`);
-            console.error(error);
-            await authService.logout();
         }
     };
 
     return (
         <div>
-            <h3> Login with email n password </h3>
-            <form onSubmit={login}>
+            <h3> Register </h3>
+            <form onSubmit={register}>
+                <input
+                    placeholder="full name"
+                    name="fullName"
+                    type="text"
+                    onChange={(event) => { setFullName(event.target.value); }}
+                />
                 <input
                     placeholder="email"
                     name="email"
@@ -70,23 +64,26 @@ function Login() {
                     type="email"
                     onChange={(event) => { setEmail(event.target.value); }}
                 />
+                <input 
+                    placeholder="phone number"
+                    name="phoneNumber"
+                    required
+                    type="text"
+                    onChange={(event) => { setPhoneNumber(event.target.value); }}
+                />
                 <input
                     placeholder="password"
                     name="password"
                     required
                     type="password"
-                    onChange={(event) => {setPassword(event.target.value);}}
+                    onChange={(event) => { setPassword(event.target.value); }}
                 />
-                <button type="submit"> GO </button>
+                <br />
+                <button type="submit"> Register </button>
             </form>
             <br />
-            <button onClick={loginWithGoogle}>GOOGLE</button>
             <br />
             <br />
-            <Link to="/otp" style={{ padding: 5 }}> OTP </Link>
-            <br />
-            <br />
-            <Link to="/register" style={{ padding: 5 }}> Register </Link>
             {message && <div><p>{message}</p></div>}
         </div>
     );

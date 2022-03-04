@@ -38,7 +38,7 @@ class UserService {
       authUid,
       email,
       fullName,
-      phoneNumber: undefined,
+      phoneNumber: phoneNumber || undefined,
     };
 
     const data = await graphQLClient.request(mutation, variables);
@@ -47,6 +47,51 @@ class UserService {
 
     return {
       ...data.createUserFromAuthUid
+    };
+  }
+
+  async register({ fullName, email, phoneNumber, password }) {
+    const graphQLClient = await getClient();
+
+    const mutation = gql`
+      mutation createUser (
+          $email: String!,
+          $phoneNumber: String!,
+          $password: String!,
+          $fullName: String
+      ) {
+          createUser (
+              createUserInput: {
+                  email: $email,
+                  phoneNumber: $phoneNumber,
+                  password: $password,
+                  fullName: $fullName
+              }
+          ) {
+              id,
+              uid,
+              authUid,
+              email,
+              phoneNumber,
+              fullName,
+          }
+      }
+    `;
+
+    const variables = {
+      fullName,
+      email,
+      phoneNumber: phoneNumber || undefined,
+      password
+    };
+
+    const data = await graphQLClient.request(mutation, variables);
+
+    console.log('USER REGISTRED!');
+
+    return {
+      ...data.createUser,
+      message: 'User created successfully! Please login.'
     };
   }
 }
