@@ -1,59 +1,48 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+/* 
+import { getAuth, signOut } from "firebase/auth";
 
-import {
-    getAuth,
-    signOut,
-} from "firebase/auth";
+import firebaseApp from "../../../firebase"; */
 
-import firebaseApp from "../../../firebase";
-
-import { GlobalContext } from '../../../App';
-
+import { GlobalContext } from "../../../App";
+import NewsCarousel from "../../../components/NewsCarousel";
+import Aisle from "../../../components/Aisle";
 
 function Home() {
-    const ctx = useContext(GlobalContext);
-    const navigate = useNavigate();
+  const ctx = useContext(GlobalContext);
+  const navigate = useNavigate();
 
-    const { user } = ctx;
+  const { user } = ctx;
 
-    const auth = getAuth(firebaseApp);
+/*   const auth = getAuth(firebaseApp); */
 
-    useEffect(() => {
-        if (!user) {
-            return navigate("/");
-        }
-    }, [navigate, user]);
+/*   useEffect(() => {
+    if (!user) {
+      return navigate("/");
+    }
+  }, [navigate, user]); */
 
-    const logout = async (event) => {
-        event.preventDefault();
+/*   const logout = async (event) => {
+    event.preventDefault();
 
-        await signOut(auth);
+    await signOut(auth);
 
-        navigate("/");
-    };
+    navigate("/");
+  };
 
-    const getIdToken = async () => {
-        const idToken = await user.getIdToken();
+  const getIdToken = async () => {
+    const idToken = await user.getIdToken();
 
-        alert(idToken);
-    };
+    alert(idToken);
+  }; */
 
-    return (
-        <div style={{ padding: 20 }}>
-            <h1>Home View</h1>
-            {
-                user?.email &&
-                <div>
-                    <h4> User Logged In: </h4>
-                    <p>{user?.email}</p>
-                    <button onClick={logout}> Sign Out </button>
-                    <br />
-                    <button onClick={getIdToken}> Get the ID TOKEN </button>
-                </div>
-            }
-        </div>
-    );
+  return (
+    <div>
+      <NewsCarousel />
+      <Aisle />
+    </div>
+  );
 }
 
 export default Home;

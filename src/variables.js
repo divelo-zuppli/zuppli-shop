@@ -9,6 +9,7 @@ export const color = {
   focus: '#313756',
   secondary: '#FF715A',
   error: '#991717',
+  black: '#170D20',
 }
 
 //FONTS

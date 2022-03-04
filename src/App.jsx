@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 import "./App.css";
@@ -30,15 +30,6 @@ const App = () => {
       <GlobalContext.Provider value={{ user }}>
         <Router>
           <Header user={user}/>
-          <nav style={{ margin: 10 }}>
-            <Link to="/login" style={{ padding: 5 }}>
-              Login
-            </Link>
-            |
-            <Link to="/home" style={{ padding: 5 }}>
-              Home
-            </Link>
-          </nav>
           <Routes>
             <Route path="/" element={<LoggedOut />} />
             <Route path="/login" element={<Login />} />
