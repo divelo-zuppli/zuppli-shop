@@ -6,15 +6,17 @@ import CartTrigger from '../CartTrigger/index.jsx'
 import { Link } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi'
 
-const Header = ({ user }) => {
-  console.log('user', user);
+const Header = ({ user, searchQuery, setSearchQuery }) => {
 
   return (
     <Container>
       <Link to="/" className="logo">
         <img src={logo} alt="Zuppli"/>
       </Link>
-      <Searchbox />
+      <Searchbox 
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
       <div className='right-container'>
         <CartTrigger cartItems={1} />
         <Link to={!user ? "/login" : "/profile"} className='link'>

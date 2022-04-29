@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { color, fontFamily, fontWeight } from '../../variables'
 
-export const SearchContainer = styled.div`
+export const SearchContainer = styled.form`
   border-radius: 8px;
   border: solid 1px ${color.gray200};
   background-color: ${color.white};

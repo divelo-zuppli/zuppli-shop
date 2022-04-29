@@ -3,11 +3,14 @@ import CategoriesSidebar from '../CategoriesSidebar'
 import ProductCard from '../ProductCard'
 import { getCurrentCategory } from '../../utils/functions'
 import { AisleContainer, ProductsContainer } from './styles'
-import { products } from './mock'
 
 const filterProductsByCategory = products => {
   let currentCategory = getCurrentCategory()
   let filteredProducts = []
+
+  if(!currentCategory.get("category")) {
+    return products
+  }
 
   for(let i = 0; i < products.length; i++) {
     if (products[i].category.name.replace(/\s+/g, '-').toLowerCase() === currentCategory.get("category")) {
@@ -18,9 +21,8 @@ const filterProductsByCategory = products => {
   return filteredProducts
 }
 
-const Aisle = () => {
-  
-  const filteredProducts = filterProductsByCategory(products)
+const Aisle = products => {
+  const filteredProducts = filterProductsByCategory(products.products)
   return (
     <AisleContainer>
       <CategoriesSidebar />

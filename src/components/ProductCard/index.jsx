@@ -1,5 +1,6 @@
 import React from 'react'
 import { CardContainer, LegendContainer } from './styles'
+import { MdAdd } from 'react-icons/md'
 
 const ProductCard = ({ product }) => {
   const { url } = product.referenceAttachments.attachment
@@ -7,6 +8,9 @@ const ProductCard = ({ product }) => {
     <CardContainer>
       <div className='image-container'>
         <img src={url} alt={product.name} />
+      </div>
+      <div className="add-button">
+        <MdAdd size={24}/>
       </div>
       <LegendContainer>
         <p className='price'>$1200</p>

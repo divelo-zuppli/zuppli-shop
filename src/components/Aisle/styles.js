@@ -3,7 +3,7 @@ import { color } from '../../variables'
 
 export const AisleContainer = styled.div`
   display: flex;
-  background-color: ${color.gray200};
+  background-color: ${color.gray};
   margin-top: 20px;
 `
 

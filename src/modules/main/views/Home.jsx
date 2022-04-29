@@ -9,7 +9,7 @@ import { GlobalContext } from "../../../App";
 import NewsCarousel from "../../../components/NewsCarousel";
 import Aisle from "../../../components/Aisle";
 
-function Home() {
+const Home = ({ products }) => {
   const ctx = useContext(GlobalContext);
   const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ function Home() {
   return (
     <div>
       <NewsCarousel />
-      <Aisle />
+      <Aisle products={products} />
     </div>
   );
 }
