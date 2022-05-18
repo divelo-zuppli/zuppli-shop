@@ -1,9 +1,9 @@
 import { GraphQLClient } from "graphql-request";
 import { getAuth } from "firebase/auth";
 
-import environment from "./environment";
+import environment from "../../environment";
 
-import firebaseApp from "../firebase";
+import firebaseApp from "../../firebase";
 
 export const getClient = async () => {
   let headers = {};

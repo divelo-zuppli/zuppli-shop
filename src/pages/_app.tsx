@@ -12,7 +12,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { appWithTranslation } from 'next-i18next';
 import { DefaultSeo } from '@components/seo/default-seo';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import firebaseApp from "./firebase";
+import firebaseApp from "../firebase";
 
 // external
 import 'react-toastify/dist/ReactToastify.css';

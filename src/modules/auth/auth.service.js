@@ -8,10 +8,10 @@ import {
   getAdditionalUserInfo,
 } from "firebase/auth";
 
-import environment from "./environment";
+import environment from "../../environment";
 import { setFirebaseProviderId } from "./utils";
 
-import firebaseApp from "../firebase";
+import firebaseApp from "../../firebase";
 
 import userService from './user.service'
 

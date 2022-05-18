@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 
-import environment from './auth/environment';
+import environment from './environment';
 
 const config = {
   apiKey: environment.FIREBASE_API_KEY,
