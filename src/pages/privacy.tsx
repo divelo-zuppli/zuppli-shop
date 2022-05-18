@@ -20,7 +20,7 @@ export default function PrivacyPage() {
     <>
       <Seo
         title="Privacy"
-        description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
+        description="Compra todo lo que tu negocio necesita al mejor precio y con la mejor calidad del mercado"
         path="privacy"
       />
       <PageHeroSection heroTitle="text-page-privacy-policy" />

@@ -22,7 +22,7 @@ export default function TermsPage() {
     <>
       <Seo
         title="About Us"
-        description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
+        description="Somos una plataforma en donde puedes comprar todos los insumos que tu negocio necesita"
         path="about-us"
       />
       {/* End of seo */}

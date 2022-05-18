@@ -27,7 +27,7 @@ export default function Home() {
     <>
       <Seo
         title="Los insumos de tu negocio al precio justo y a tiempo"
-        description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
+        description="Compra todo lo que tu negocio necesita al mejor precio y con la mejor calidad del mercado"
         path="/"
       />
       <HeroBannerCard

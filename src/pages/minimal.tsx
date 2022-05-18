@@ -25,7 +25,7 @@ export default function Home() {
     <>
       <Seo
         title="Minimal"
-        description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
+        description="Compra todo lo que tu negocio necesita al mejor precio y con la mejor calidad del mercado"
         path="minimal"
       />
       <HeroBannerCard

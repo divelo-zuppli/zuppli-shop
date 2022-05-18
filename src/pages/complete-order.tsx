@@ -18,7 +18,7 @@ export default function Order() {
     <>
       <Seo
         title="Order"
-        description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
+        description="Completa tu orden y la enviaremos a donde necesites"
         path="complete-order"
       />
       <Divider />

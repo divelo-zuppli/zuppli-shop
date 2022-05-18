@@ -14,7 +14,7 @@ export default function TermsPage() {
     <>
       <Seo
         title="FAQ"
-        description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
+        description="Aquí intentamos resolver todas tus preguntas"
         path="faq"
       />
       <PageHeroSection heroTitle="text-page-faq" className="faq-banner-area" />

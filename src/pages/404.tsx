@@ -9,7 +9,7 @@ export default function ErrorPage() {
     <>
       <Seo
         title="404"
-        description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
+        description="No logramos encontrar esta página."
         path="404"
       />
       <ErrorInformation />

@@ -15,7 +15,7 @@ export default function TermsPage() {
     <>
       <Seo
         title="Terms & conditions"
-        description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
+        description="Compra todo lo que tu negocio necesita al mejor precio y con la mejor calidad del mercado"
         path="terms"
       />
       <PageHeroSection heroTitle="text-page-terms-condition" />

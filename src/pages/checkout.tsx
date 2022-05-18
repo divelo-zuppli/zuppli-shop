@@ -11,7 +11,7 @@ export default function CheckoutPage() {
     <>
       <Seo
         title="Checkout"
-        description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
+        description="Termina tu compra y recíbela en el menor tiempo posible"
         path="checkout"
       />
       <Container className="py-10 border-t 2xl:py-12 border-border-base checkout">

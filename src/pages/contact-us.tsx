@@ -14,7 +14,7 @@ export default function ContactUsPage() {
     <>
       <Seo
         title="Contact Us"
-        description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
+        description="¿Necesitas algo? Contáctanos"
         path="contact-us"
       />
       <PageContactHeroSection />

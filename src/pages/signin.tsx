@@ -10,7 +10,7 @@ export default function SignInPage() {
     <>
       <Seo
         title="Sign In"
-        description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
+        description="Compra todo lo que tu negocio necesita al mejor precio y con la mejor calidad del mercado"
         path="signin"
       />
       <Divider />
