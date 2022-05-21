@@ -7,6 +7,11 @@ import {
   signInWithPopup,
   getAdditionalUserInfo,
 } from "firebase/auth";
+import Cookies from 'js-cookie';
+
+import Router from 'next/router';
+
+import { useUI } from '@contexts/ui.context';
 
 import environment from "../../environment";
 import { setFirebaseProviderId } from "./utils";
@@ -67,8 +72,6 @@ class AuthService {
 
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
-    console.log('userCredential', userCredential);
-
     const { providerId } = userCredential;
 
     if (providerId) setFirebaseProviderId(providerId);
@@ -110,6 +113,8 @@ class AuthService {
       });
     }
 
+    Cookies.set('auth_token', user.accessToken);
+
     // console.log('LOGIN WITH GOOGLE RESULT', userCredential);
 
     const { providerId } = userCredential;
@@ -119,7 +124,7 @@ class AuthService {
 
   async logout() {
     const auth = getAuth(firebaseApp);
-
+    Cookies.remove('auth_token');
     if (auth.currentUser) await auth.signOut();
   }
 }

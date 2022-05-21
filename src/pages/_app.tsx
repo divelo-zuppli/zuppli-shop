@@ -30,7 +30,7 @@ const Noop: React.FC = ({ children }) => <>{children}</>;
 
 const CustomApp = ({ Component, pageProps }: AppProps) => {
 
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState();
 
   const auth = getAuth(firebaseApp);
 

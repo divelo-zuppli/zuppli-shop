@@ -26,53 +26,6 @@ export const siteSettings = {
   site_header: {
     menu: [
       {
-        id: 1,
-        path: '/',
-        label: 'menu-demos',
-        subMenu: [
-          {
-            id: 1,
-            path: '/',
-            label: 'menu-modern',
-          },
-          {
-            id: 2,
-            path: '/classic',
-            label: 'menu-classic',
-          },
-          {
-            id: 3,
-            path: '/vintage',
-            label: 'menu-vintage',
-          },
-          {
-            id: 4,
-            path: '/standard',
-            label: 'menu-standard',
-          },
-          {
-            id: 5,
-            path: '/minimal',
-            label: 'menu-minimal',
-          },
-          {
-            id: 6,
-            path: '/trendy',
-            label: 'menu-trendy',
-          },
-          {
-            id: 7,
-            path: '/elegant',
-            label: 'menu-elegant',
-          },
-          {
-            id: 8,
-            path: '/refined',
-            label: 'menu-refined',
-          },
-        ],
-      },
-      {
         id: 2,
         path: '/search',
         label: 'menu-categories',
@@ -135,75 +88,6 @@ export const siteSettings = {
         id: 4,
         path: '/search/',
         label: 'menu-search',
-      },
-      {
-        id: 5,
-        path: '/shops/',
-        label: 'menu-shops',
-      },
-      {
-        id: 6,
-        path: '/',
-        label: 'menu-pages',
-        subMenu: [
-          {
-            id: 1,
-            path: '/',
-            label: 'menu-users',
-            subMenu: [
-              {
-                id: 1,
-                path: '/my-account/account-settings',
-                label: 'menu-my-account',
-              },
-              {
-                id: 2,
-                path: '/signin',
-                label: 'menu-sign-in',
-              },
-              {
-                id: 3,
-                path: '/signup',
-                label: 'menu-sign-up',
-              },
-            ],
-          },
-          {
-            id: 2,
-            path: '/faq',
-            label: 'menu-faq',
-          },
-          {
-            id: 3,
-            path: '/about-us',
-            label: 'menu-about-us',
-          },
-          {
-            id: 4,
-            path: '/privacy',
-            label: 'menu-privacy-policy',
-          },
-          {
-            id: 5,
-            path: '/terms',
-            label: 'menu-terms-condition',
-          },
-          {
-            id: 6,
-            path: '/contact-us',
-            label: 'menu-contact-us',
-          },
-          {
-            id: 7,
-            path: '/checkout',
-            label: 'menu-checkout',
-          },
-          {
-            id: 8,
-            path: '/404',
-            label: 'menu-404',
-          },
-        ],
       },
     ],
     languageMenu: [

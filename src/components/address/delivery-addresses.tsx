@@ -13,7 +13,7 @@ const DeliveryAddresses: React.FC = () => {
     return <div>Loading...</div>;
   }
   return (
-    <div className="w-[820px] text-brand-light p-10 border border-border-base rounded-md relative">
+    <div className="w-[820px] text-brand-light p-10 border border-border-base rounded-md relative bg-white">
       <CloseButton onClick={closeModal} />
       <div className="w-full">
         <Heading variant="title" className="mb-8 -mt-1.5">

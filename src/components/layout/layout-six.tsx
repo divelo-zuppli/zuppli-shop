@@ -24,14 +24,14 @@ const Layout: React.FC = ({ children }) => {
           <div className="text-sm font-medium py-0.5 ltr:pr-6 rtl:pl-6">
             <span>
               {t(
-                '35% Exclusive discount plus free next day delivery, excludes sale'
+                'Envío gratis en tu primera compra si ésta es mayor a $70.000COP'
               )}
               <Link
                 href="#"
                 className="opacity-80 inline-flex text-xs uppercase font-bold ltr:pl-1.5 rtl:pr-1.5 items-center relative transition-all hover:opacity-100"
               >
                 <span className="border-b border-brand-light inline-block pb-0.5">
-                  Learn More
+                  Ir a comprar
                 </span>
                 <IoChevronForwardCircleOutline className="text-xl ltr:ml-1 rtl:mr-1 relative -top-0.5" />
               </Link>
