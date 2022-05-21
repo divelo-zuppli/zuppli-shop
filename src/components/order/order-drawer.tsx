@@ -47,11 +47,11 @@ const OrderDrawer: React.FC = () => {
               <OrderStatus status={data?.status?.serial} />
               <div className="grid grid-cols-12 bg-fill-base py-3 rounded-[3px] text-brand-dark/70 text-[12px] md:text-[14px]">
                 <div className="col-span-2"></div>
-                <div className="col-span-5">Items Name</div>
+                <div className="col-span-5">Producto</div>
                 <div className="col-span-3 text-center md:ltr:text-left md:rtl:text-right">
-                  Quantity
+                  Cantidad
                 </div>
-                <div className="col-span-2">Price</div>
+                <div className="col-span-2">Precio</div>
               </div>
               {data?.products?.map((item: any, index: string) => (
                 <OrderDetailsContent key={index} item={item} />
@@ -67,7 +67,7 @@ const OrderDrawer: React.FC = () => {
                     </p>
                     {typeof data?.discount === 'number' && (
                       <p className="flex justify-between mb-2">
-                        <span className="ltr:mr-8 rtl:ml-8">Discount: </span>
+                        <span className="ltr:mr-8 rtl:ml-8">Descuentos: </span>
                         <span className="font-medium">
                           <DiscountPrice discount={data?.discount} />
                         </span>
@@ -75,7 +75,7 @@ const OrderDrawer: React.FC = () => {
                     )}
                     {typeof data?.delivery_fee === 'number' && (
                       <p className="flex justify-between mb-2">
-                        <span className="ltr:mr-8 rtl:ml-8">Delivery Fee:</span>
+                        <span className="ltr:mr-8 rtl:ml-8">Costo de envío:</span>
                         <span className="font-medium">
                           <DeliveryFee delivery={data?.delivery_fee} />
                         </span>
@@ -83,7 +83,7 @@ const OrderDrawer: React.FC = () => {
                     )}
                   </div>
                   <p className="flex justify-between mb-2 ltr:pl-20 rtl:pr-20">
-                    <span className="ltr:mr-8 rtl:ml-8">Total Cost:</span>
+                    <span className="ltr:mr-8 rtl:ml-8">Total:</span>
                     <span className="font-medium">
                       <TotalPrice items={data} />
                     </span>
@@ -92,13 +92,13 @@ const OrderDrawer: React.FC = () => {
               </div>
               <div className="mt-12 ltr:text-right rtl:text-left">
                 <span className="py-3 px-5 cursor-pointer inline-block text-[12px] md:text-[14px] text-black font-medium bg-white rounded border border-solid border-[#DEE5EA] ltr:mr-4 rtl:ml-4 hover:bg-[#F35C5C] hover:text-white hover:border-[#F35C5C] transition-all capitalize">
-                  Report order
+                  Reportar orden
                 </span>
                 <span
                   onClick={closeDrawer}
                   className="py-3 px-5 cursor-pointer inline-block text-[12px] md:text-[14px] text-white font-medium bg-[#F35C5C] rounded border border-solid border-[#F35C5C]  hover:bg-white hover:text-black hover:border-[#DEE5EA] transition-all capitalize"
                 >
-                  Cancel order
+                  Cancelar orden
                 </span>
               </div>
             </div>

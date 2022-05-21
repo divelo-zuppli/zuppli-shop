@@ -36,14 +36,14 @@ export const Status: React.FC<{ item?: any }> = ({ item }) => {
 
 const columns = [
   {
-    title: 'Order Number',
+    title: 'Número de orden',
     dataIndex: 'tracking_number',
     key: 'tracking_number',
     className: 'id-cell',
     width: 140,
   },
   {
-    title: 'Order Date',
+    title: 'Fecha de la orden',
     dataIndex: 'created_at',
     key: 'created_at',
     width: 140,
@@ -52,7 +52,7 @@ const columns = [
     },
   },
   {
-    title: 'Status',
+    title: 'Estado',
     key: 'status',
     width: 145,
     render: function status(item: any) {
@@ -60,13 +60,13 @@ const columns = [
     },
   },
   {
-    title: 'Delivery Time',
+    title: 'Fecha de entrega',
     dataIndex: 'delivery_time',
     key: 'delivery_time',
     width: 140,
   },
   {
-    title: 'Total Price',
+    title: 'Precio total',
     key: 'total',
     width: 130,
     render: function totalPrice(items: any) {
@@ -120,7 +120,7 @@ const OrderTable: React.FC<{ orders?: any }> = ({ orders }) => {
     <>
       <div className="items-center mb-5 md:flex md:justify-between sm:mb-10">
         <h2 className="mb-4 text-sm font-semibold md:text-xl text-brand-dark md:mb-0">
-          My order list
+          Mis Órdenes
         </h2>
         <form onSubmit={onSubmitHandle} className="relative">
           <span className="absolute ltr:right-3 rtl:left-3 top-[80%] transform -translate-y-1/2 order-icon-color">
@@ -131,7 +131,7 @@ const OrderTable: React.FC<{ orders?: any }> = ({ orders }) => {
             type="search"
             value={value}
             onChange={onChangeSearch}
-            placeholder="Search Order list"
+            placeholder="Buscar orden"
             inputClassName=" h-[46px] w-full bg-white border border-[#E3E8EC] rounded-md order-search focus:border-2 focus:outline-none focus:border-brand focus:text-brand-muted"
           />
         </form>

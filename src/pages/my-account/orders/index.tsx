@@ -13,7 +13,7 @@ export default function OrdersTablePage() {
   return (
     <>
       <Seo
-        title="Orders"
+        title="Órdenes"
         description="Compra todo lo que tu negocio necesita al mejor precio y con la mejor calidad del mercado"
         path="my-account/orders"
       />

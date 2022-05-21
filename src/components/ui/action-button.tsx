@@ -40,10 +40,10 @@ const ActionsButton: React.FC<{ item?: any }> = ({ item }) => {
                   className="text-[14px] whitespace-nowrap text-brand-dark py-2 px-5 hover:bg-[#F6F9FC] transition-all cursor-pointer"
                   onClick={() => handleCartOpen(item)}
                 >
-                  Order Details
+                  Detalle de la orden
                 </div>
                 <div className="text-[14px] whitespace-nowrap text-[#F35C5C] py-2 px-5 hover:bg-[#F6F9FC] transition-all cursor-pointer">
-                  Cancel Order
+                  Cancelar orden
                 </div>
               </Popover.Panel>
             </Transition>

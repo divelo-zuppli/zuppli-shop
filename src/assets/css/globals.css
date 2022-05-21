@@ -124,7 +124,7 @@ input:checked + .slider:before {
   @apply ltr:ml-auto rtl:mr-auto;
 }
 .product-count-button-position > div {
-  @apply w-[calc(100%-28px)] xl:w-[calc(100%-50px)];
+  @apply w-[calc(100%-28px)] xl:w-[calc(100%)];
 }
 .after-item-opacity:after {
   @apply w-[16%] 2xl:w-[14%] 3xl:w-[12%] 4xl:hidden;
