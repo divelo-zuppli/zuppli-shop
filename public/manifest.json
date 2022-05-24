@@ -1,8 +1,8 @@
 {
-  "name": "BoroBazar React E-Commerce Template",
-  "short_name": "BoroBazar",
+  "name": "Zuppli - Los insumos de tu negocio al precio justo y a tiempo",
+  "short_name": "Zuppli",
   "theme_color": "#ffffff",
-  "background_color": "#004740",
+  "background_color": "#FF715A",
   "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/",
