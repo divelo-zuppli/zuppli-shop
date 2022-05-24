@@ -1,9 +1,10 @@
 import { GraphQLClient } from "graphql-request";
+
 import { getAuth } from "firebase/auth";
 
-import environment from "../../environment";
+import environment from "./environment";
 
-import firebaseApp from "../../firebase";
+import firebaseApp from "./firebase";
 
 export const getClient = async () => {
   let headers = {};
@@ -18,6 +19,8 @@ export const getClient = async () => {
       authorization: `Bearer ${token}`
     };
   }
+
+  console.log('environment.GRAPHQL_ENDPOINT', environment.GRAPHQL_ENDPOINT);
 
   const graphQLClient = new GraphQLClient(environment.GRAPHQL_ENDPOINT, {
     headers

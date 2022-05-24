@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request';
 
-import { getClient } from './graphql';
+import { getClient } from '../graphql';
 
 class UserService {
   async registerFromAuthUid({ authUid, email, fullName, phoneNumber }) {

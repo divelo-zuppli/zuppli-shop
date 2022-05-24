@@ -14,7 +14,7 @@ import CloseButton from '@components/ui/close-button';
 import { FaFacebook, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 import cn from 'classnames';
 
-import authService from '../../modules/auth/auth.service';
+import authService from '../../services/auth.service';
 
 import { GlobalContext } from '../../pages/_app';
 

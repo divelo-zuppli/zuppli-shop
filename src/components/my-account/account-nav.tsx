@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useLogoutMutation } from '@framework/auth/use-logout';
 import { useTranslation } from 'next-i18next';
 import LogoutIcon from '@components/icons/account-logout';
-import authService from '../../modules/auth/auth.service';
+import authService from '../../services/auth.service';
 
 type Option = {
   name: string;
