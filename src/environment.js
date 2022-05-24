@@ -1,5 +1,5 @@
 const environment = {
-    GRAPHQL_ENDPOINT: process.env.REACT_APP_GRAPHQL_ENDPOINT || 'http://localhost:5000/graphql',
+    GRAPHQL_ENDPOINT: process.env.REACT_APP_GRAPHQL_ENDPOINT || 'https://zuppli-api-dev.herokuapp.com/graphql',
     /* FIREBASE */
     FIREBASE_API_KEY: 'AIzaSyBHnvN0FLjeEud2tiV443eavJS3v3Yrg9c',
     FIREBASE_AUTH_DOMAIN: 'zuppli-dev.firebaseapp.com',

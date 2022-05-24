@@ -30,6 +30,13 @@ class CategoryService {
                     name
                     slug
                 }
+                categoryAttachments {
+                    attachment {
+                        id
+                        uid
+                        url
+                    }
+                }
                 children {
                     id
                     name
@@ -39,14 +46,11 @@ class CategoryService {
                         name
                         slug
                     }
-                    children {
-                        id
-                        name
-                        slug
-                        parent {
+                    categoryAttachments {
+                        attachment {
                             id
-                            name
-                            slug
+                            uid
+                            url
                         }
                     }
                 }
@@ -62,7 +66,43 @@ class CategoryService {
 
         console.log('CATEGORIES FETCHED!');
 
-        return data.getAllCategories;
+        console.log('data', data.getAllCategories);
+
+        const parsedData = data.getAllCategories.map(category => {
+            const children = category.children.map(child => {
+                return {
+                    id: child.id,
+                    name: child.name,
+                    slug: child.slug,
+                    parent: {
+                        id: child.parent.id,
+                        name: child.parent.name,
+                        slug: child.parent.slug,
+                    },
+                    image: !child.categoryAttachments.length ? undefined : {
+                        id: child.categoryAttachments[0].attachment.id,
+                        thumbnail: child.categoryAttachments[0].attachment.url,
+                        original: child.categoryAttachments[0].attachment.url,
+                    },
+                };
+            });
+
+            return {
+                id: category.id,
+                name: category.name,
+                slug: category.slug,
+                image: !category.categoryAttachments.length ? undefined : {
+                    id: category.categoryAttachments[0].attachment.id,
+                    thumbnail: category.categoryAttachments[0].attachment.url,
+                    original: category.categoryAttachments[0].attachment.url,
+                },
+                children,
+            }
+        });
+
+        console.log('parsedData', parsedData);
+
+        return parsedData;
     }
 }
 
