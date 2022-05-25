@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import ProductCard from '@components/product/product-cards/product-card';
 import type { FC } from 'react';
-import { useProductsQuery } from '@framework/product/get-all-products';
+import { useProductsQuery } from '../../../framework/basic-graphql/product/get-all-products';
 import ProductCardLoader from '@components/ui/loaders/product-card-loader';
 import SectionHeader from '@components/common/section-header';
 import { useModalAction } from '@components/common/modal/modal.context';
@@ -28,6 +28,8 @@ const RefinedAllProductFeed: FC<ProductFeedProps> = ({ className = '' }) => {
   } = useProductsQuery({ limit: LIMITS.REFINED_PRODUCTS_LIMITS, ...query });
 
   const { openModal } = useModalAction();
+
+  console.log(data)
 
   function handleCategoryPopup() {
     openModal('CATEGORY_VIEW');

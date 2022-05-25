@@ -12,12 +12,18 @@ module.exports = withPWA({
     runtimeCaching,
   },
   i18n,
+  images: {
+    domains: ['res.cloudinary.com'],
+  },
   ...(process.env.NODE_ENV === 'production' && {
     typescript: {
       ignoreBuildErrors: true,
     },
     eslint: {
       ignoreDuringBuilds: true,
+    },
+    images: {
+      domains: ['res.cloudinary.com'],
     },
   }),
 });

@@ -64,9 +64,9 @@ class CategoryService {
 
         const data = await graphQLClient.request(query, variables);
 
-        console.log('CATEGORIES FETCHED!');
+        // console.log('CATEGORIES FETCHED!');
 
-        console.log('data', data.getAllCategories);
+        // console.log('data', data.getAllCategories);
 
         const parsedData = data.getAllCategories.map(category => {
             const children = category.children.map(child => {
@@ -100,7 +100,7 @@ class CategoryService {
             }
         });
 
-        console.log('parsedData', parsedData);
+        // console.log('parsedData', parsedData);
 
         return parsedData;
     }
