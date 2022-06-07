@@ -26,10 +26,17 @@ class ProductService {
                 description
                 updatedAt
                 createdAt
+                measurementUnit
+                measurementValue
                 category {
                     id
                     name
                     slug
+                }
+                products {
+                    sellPrice
+                    salePrice
+                    stock
                 }
                 referenceAttachments {
                     attachment {
@@ -50,16 +57,24 @@ class ProductService {
 
         const parsedData = data.getAllReferences.map(reference => {
 
+            const productData = reference.products.map(product => {
+                return {
+                    salePrice: product.salePrice,
+                    sellPrice: product.sellPrice,
+                    stock: product.stock
+                }
+            })
             return {
                 id: reference.id,
                 name: reference.name,
                 uid: reference.uid,
                 sku: reference.sku,
                 slug: reference.name,
-                price: 12000,
-                quantity: 30,
+                price: productData[0].sellPrice,
+                sale_price: productData[0].salePrice,
+                quantity: productData[0].stock,
                 sold: 8,
-                unit: 'kg',
+                unit: `${reference.measurementValue + reference.measurementUnit}`,
                 description: reference.description,
                 updatedAt: reference.updatedAt,
                 createdAt: reference.createdAt,

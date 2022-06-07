@@ -12,6 +12,8 @@ export function formatPrice({
   const formatCurrency = new Intl.NumberFormat(locale, {
     style: 'currency',
     currency: currencyCode,
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
   });
 
   return formatCurrency.format(amount);
@@ -50,7 +52,7 @@ export default function usePrice(
   } | null
 ) {
   const { amount, baseAmount, currencyCode } = data ?? {};
-  const locale = 'es';
+  const locale = 'es-CO';
   const value = useMemo(() => {
     if (typeof amount !== 'number' || !currencyCode) return '';
 
