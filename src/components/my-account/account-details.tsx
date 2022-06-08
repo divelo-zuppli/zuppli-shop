@@ -1,3 +1,4 @@
+import React from 'react';
 import Input from '@components/ui/form/input';
 import PasswordInput from '@components/ui/form/password-input';
 import Button from '@components/ui/button';
@@ -10,6 +11,7 @@ import {
 import { useTranslation } from 'next-i18next';
 import Switch from '@components/ui/switch';
 import Text from '@components/ui/text';
+import { GlobalContext } from 'src/pages/_app';
 
 const defaultValues = {};
 
@@ -27,6 +29,9 @@ const AccountDetails: React.FC = () => {
   function onSubmit(input: UpdateUserType) {
     updateUser(input);
   }
+
+  const context = React.useContext(GlobalContext)
+
   return (
     <div className="flex flex-col w-full">
       <Heading variant="titleLarge" className="mb-5 md:mb-6 lg:mb-7 lg:-mt-1">

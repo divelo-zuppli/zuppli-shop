@@ -1,13 +1,25 @@
+import { useState } from 'react'
 import Layout from '@components/layout/layout';
 import AccountLayout from '@components/my-account/account-layout';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import AddressGrid from '@components/address/address-grid';
-import { useAddressQuery } from '@framework/address/address';
 import { GetStaticProps } from 'next';
 import Seo from '@components/seo/seo';
 
+import { fetchBusiness } from 'src/framework/basic-graphql/business/get-address';
+
 export default function AccountDetailsPage() {
-  let { data, isLoading } = useAddressQuery();
+
+  const [address, setAddresses] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
+  
+  fetchBusiness().then((data) => {
+    setAddresses(data)
+    setIsLoading(false)
+  }).catch((error) => {
+    console.error(error);
+  });
+
   return (
     <>
       <Seo
@@ -17,7 +29,7 @@ export default function AccountDetailsPage() {
       />
       <AccountLayout>
         {!isLoading ? (
-          <AddressGrid address={data?.data} />
+          <AddressGrid address={address?.data} />
         ) : (
           <div>Loading...</div>
         )}
