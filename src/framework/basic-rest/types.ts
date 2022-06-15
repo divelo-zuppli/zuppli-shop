@@ -1,5 +1,12 @@
 import { QueryKey } from 'react-query';
 
+export type NewAddressType = {
+  address: string;
+  name: string;
+  phoneNumber: string;
+  authUid: string;
+}
+
 export type CollectionsQueryOptionsType = {
   text?: string;
   collection?: string;

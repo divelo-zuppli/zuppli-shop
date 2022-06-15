@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Layout from '@components/layout/layout';
 import AccountLayout from '@components/my-account/account-layout';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -7,23 +7,29 @@ import { GetStaticProps } from 'next';
 import Seo from '@components/seo/seo';
 
 import { fetchBusiness } from 'src/framework/basic-graphql/business/get-address';
+import Cookies from 'js-cookie';
 
 export default function AccountDetailsPage() {
 
   const [address, setAddresses] = useState({})
   const [isLoading, setIsLoading] = useState(true)
   
-  fetchBusiness().then((data) => {
-    setAddresses(data)
-    setIsLoading(false)
-  }).catch((error) => {
-    console.error(error);
-  });
+  
+  const authUid = Cookies.get('auth_uid')
+
+  useEffect(() => {
+    fetchBusiness(authUid).then((data) => {
+      setAddresses(data)
+      setIsLoading(false)
+    }).catch((error) => {
+      console.error(error);
+    });
+  }, [])
 
   return (
     <>
       <Seo
-        title="Address"
+        title="Direcciones"
         description="Compra todo lo que tu negocio necesita al mejor precio y con la mejor calidad del mercado"
         path="my-account/address"
       />

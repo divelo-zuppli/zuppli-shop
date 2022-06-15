@@ -3,14 +3,16 @@ import { gql } from 'graphql-request';
 import { getClient } from 'src/graphql';
 
 class BusinessService {
-    async getAll() {
+    async getAll({ authId }) {
         const graphQLClient = await getClient();
 
         const query = gql`
-        {
+        query getUser (
+            $authUid: String!,
+        ) {
           getUser(
               getOneUserInput: {
-                  authUid: "zJ5nnZo1sxWAhPcFFQWslOh47g22",
+                  authUid: $authUid,
               }
           ) {
               id,
@@ -24,7 +26,11 @@ class BusinessService {
       }
         `;
 
-        const data = await graphQLClient.request(query);
+        const variables = {
+            authUid: authId,
+        };
+
+        const data = await graphQLClient.request(query, variables);
 
         // console.log('REFERENCES FETCHED!');
 
@@ -32,9 +38,9 @@ class BusinessService {
 
             const businesses = data.getUser.businesses.map(business => {
               const address = {
-                formatted_address: business.name,
-                lat: "1.232228",
-                lng: "104.221955"
+                address: business.address,
+                phoneNumber: business.phoneNumber,
+                name: business.name
               }
                 return {
                     address: address,
@@ -45,6 +51,40 @@ class BusinessService {
             });
 
         return businesses;
+    }
+
+    async createBusiness(addressInfo) {
+        const graphQLClient = await getClient();
+
+        const mutation = gql`
+            mutation createBusiness (
+                $address: String!,
+                $name: String!,
+                $phoneNumber: String!,
+                $authUid: String!
+            ) {
+                createBusiness(
+                    createBusinessInput: {
+                        address: $address,
+                        name: $name,
+                        authUid: $authUid,
+                        phoneNumber: $phoneNumber,
+                    }
+                ) {
+                    uid
+                    id
+                    address
+                    phoneNumber
+                    name
+                    createdAt
+                    updatedAt
+                }
+            }
+        `
+
+        const data = await graphQLClient.request(mutation, addressInfo);
+
+        return data
     }
 }
 

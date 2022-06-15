@@ -46,7 +46,8 @@ const AddressGrid: React.FC<{ address?: any }> = ({ address }) => {
                 as="div"
                 className="leading-6 text-brand-muted"
               >
-                {formatAddress(item?.address)}
+                {item?.address?.address}
+                {item?.address?.phoneNumber}
               </RadioGroup.Description>
               <div className="absolute z-10 flex transition-all ltr:right-3 rtl:left-3 top-3 lg:opacity-0 address__actions">
                 <button
