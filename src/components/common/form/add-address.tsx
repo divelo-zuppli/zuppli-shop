@@ -9,7 +9,7 @@ import CloseButton from '@components/ui/close-button';
 import Heading from '@components/ui/heading';
 import Map from '@components/ui/map';
 import { useTranslation } from 'next-i18next';
-import { createBusiness } from 'src/framework/basic-graphql/business/get-address';
+import { createBusiness, updateBusiness } from 'src/framework/basic-graphql/business/get-address';
 import { GlobalContext } from 'src/pages/_app';
 
 interface ContactFormValues {
@@ -24,26 +24,38 @@ const AddAddressForm: React.FC = () => {
   const { t } = useTranslation();
   const { data } = useModalState();
   const [isLoading, setIsLoading] = useState(false)
+  const isEdit = !!data?.address
 
   const { closeModal } = useModalAction();
 
   const { user } = useContext(GlobalContext)
 
-  async function onSubmit(values: ContactFormValues, e: any) {  
+  async function onSubmit(values: ContactFormValues, e: any) { 
     const newValues = {
       name: values.name,
       phoneNumber: values.phoneNumber,
       address: values.address,
-      authUid: user.authUid
+      authUid: user.authUid,
+      uid: data?.address?.uid
     }
 
-    setIsLoading(true)
-    createBusiness(newValues).then(() => {
-      setIsLoading(false)
-      location.reload()
-    }).catch((error) => {
-      console.error(error)
-    })
+    if(isEdit) {
+      setIsLoading(true)
+      updateBusiness(newValues).then(() => {
+        setIsLoading(false)
+        location.reload()
+      }).catch((error) => {
+        console.error(error)
+      })
+    } else {
+      setIsLoading(true)
+      createBusiness(newValues).then(() => {
+        setIsLoading(false)
+        location.reload()
+      }).catch((error) => {
+        console.error(error)
+      })
+    }
   }
 
   const {
@@ -55,7 +67,7 @@ const AddAddressForm: React.FC = () => {
     defaultValues: {
       name: data || data?.title ? data.title : '',
       default: data || data?.default ? data.default : '',
-      phoneNumber: data || data?.phoneNumber ? data.phoneNumber : '',
+      phoneNumber: data || data?.address?.phoneNumber ? data?.address?.phoneNumber : '',
       address:
         data || data?.address?.address
           ? data?.address?.address

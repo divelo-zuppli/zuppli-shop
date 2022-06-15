@@ -91,8 +91,6 @@ class ProductService {
             }
         });
 
-        // console.log("estoy llegando")
-
         // console.log('parsedData', parsedData);
 
         return parsedData;

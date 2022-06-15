@@ -13,3 +13,9 @@ export const createBusiness = async(addressInfo: NewAddressType) => {
 
     return { data: data }
 }
+
+export const updateBusiness = async(newAddressInfo: NewAddressType) => {
+    const data = await BusinessService.updateBusiness(newAddressInfo)
+
+    return { data: data }
+}

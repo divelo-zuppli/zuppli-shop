@@ -21,6 +21,7 @@ class BusinessService {
                   uid
                   name
                   address
+                  phoneNumber
               }
           }
       }
@@ -40,7 +41,8 @@ class BusinessService {
               const address = {
                 address: business.address,
                 phoneNumber: business.phoneNumber,
-                name: business.name
+                name: business.name,
+                uid: business.uid
               }
                 return {
                     address: address,
@@ -78,6 +80,41 @@ class BusinessService {
                     name
                     createdAt
                     updatedAt
+                }
+            }
+        `
+
+        const data = await graphQLClient.request(mutation, addressInfo);
+
+        return data
+    }
+
+    async updateBusiness(addressInfo) {
+        const graphQLClient = await getClient();
+
+        const mutation = gql`
+            mutation updateBusiness (
+                $authUid: String!,
+                $address: String!,
+                $name: String!,
+                $phoneNumber: String!,
+                $uid: String!
+            ) {
+                updateBusiness (
+                    getOneBusinessInput: {
+                        uid: $uid
+                    },
+                    updateBusinessInput: {
+                        address: $address,
+                        authUid: $authUid,
+                        name: $name,
+                        phoneNumber: $phoneNumber
+                    }
+                ) {
+                    address
+                    name
+                    phoneNumber
+                    uid
                 }
             }
         `

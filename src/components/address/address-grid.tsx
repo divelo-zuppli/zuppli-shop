@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TiPencil } from 'react-icons/ti';
+import { TiPencil, TiPhone, TiLocation } from 'react-icons/ti';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { RadioGroup } from '@headlessui/react';
 import { useModalAction } from '@components/common/modal/modal.context';
@@ -44,10 +44,15 @@ const AddressGrid: React.FC<{ address?: any }> = ({ address }) => {
               </RadioGroup.Label>
               <RadioGroup.Description
                 as="div"
-                className="leading-6 text-brand-muted"
+                className="leading-6 text-brand-muted flex items-center"
               >
-                {item?.address?.address}
-                {item?.address?.phoneNumber}
+                <TiLocation className="mr-1"/> {item?.address?.address}
+              </RadioGroup.Description>
+              <RadioGroup.Description
+                as="span"
+                className="leading-6 text-brand-muted flex items-center"
+              >
+                <TiPhone className="mr-1"/>{item?.address?.phoneNumber}
               </RadioGroup.Description>
               <div className="absolute z-10 flex transition-all ltr:right-3 rtl:left-3 top-3 lg:opacity-0 address__actions">
                 <button
