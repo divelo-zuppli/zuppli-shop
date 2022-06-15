@@ -86,13 +86,43 @@ class UserService {
 
     const data = await graphQLClient.request(mutation, variables);
 
-    console.log('USER REGISTRED!');
+    console.log('USER REGISTRED!', data);
 
     return {
       ...data.createUser,
       message: 'User created successfully! Please login.'
     };
   }
+
+  async getUser(authUid) {
+    const graphQLClient = await getClient();
+    
+    const query = gql`
+      query getUser (
+        $authUid: String!,
+    ) {
+        getUser (
+            getOneUserInput: {
+                authUid: $authUid
+            }
+        ) {
+            authUid
+            fullName
+            uid
+            phoneNumber
+            email
+        }
+      }
+    `
+
+    const variables = {
+      authUid: authUid
+    }
+    const userData = await graphQLClient.request(query, variables);
+
+    return userData;
+
+  } 
 }
 
 const userService = new UserService();

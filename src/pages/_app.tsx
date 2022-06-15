@@ -13,6 +13,8 @@ import { appWithTranslation } from 'next-i18next';
 import { DefaultSeo } from '@components/seo/default-seo';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import firebaseApp from "../firebase";
+import { getUser } from 'src/framework/basic-graphql/user/handle-user';
+
 
 // external
 import 'react-toastify/dist/ReactToastify.css';
@@ -22,7 +24,8 @@ import '@assets/css/scrollbar.css';
 import '@assets/css/swiper-carousel.css';
 import '@assets/css/custom-plugins.css';
 import '@assets/css/globals.css';
-import { getDirection } from '@utils/get-direction';
+import { getDirection } from '@utils/get-direction'
+import Cookies from 'js-cookie'
 
 export const GlobalContext = React.createContext({ user: {}});
 
@@ -32,11 +35,16 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
 
   const [user, setUser] = useState();
 
-  const auth = getAuth(firebaseApp);
+  const authUid = Cookies.get('auth_uid')
+  const token = Cookies.get('auth_token')
 
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
+  if(!user && token) {
+    getUser(authUid).then((data) => {
+      setUser(data.user)
+    }).catch((error) => {
+      console.error(error)
+    })
+  }
 
   const queryClientRef = useRef<any>();
   if (!queryClientRef.current) {

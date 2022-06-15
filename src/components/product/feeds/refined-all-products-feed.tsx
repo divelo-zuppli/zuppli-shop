@@ -29,8 +29,6 @@ const RefinedAllProductFeed: FC<ProductFeedProps> = ({ className = '' }) => {
 
   const { openModal } = useModalAction();
 
-  console.log(data)
-
   function handleCategoryPopup() {
     openModal('CATEGORY_VIEW');
   }

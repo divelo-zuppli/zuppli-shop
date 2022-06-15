@@ -21,7 +21,7 @@ export const fetchProducts = async ({ queryKey }: any) => {
 };
 
 export const useProductsQuery = (options: QueryOptionsType) => {
-  console.log('options: ', options);
+  // console.log('options: ', options);
 
   return useInfiniteQuery<PaginatedProduct, Error>(
     [API_ENDPOINTS.PRODUCTS, options],

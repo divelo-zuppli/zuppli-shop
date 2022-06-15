@@ -11,7 +11,7 @@ export const fetchCategories = async ({ queryKey }: any) => {
 };
 
 export const useCategoriesQuery = (options: CategoriesQueryOptionsType) => {
-  console.log('options: ', options);
+  // console.log('options: ', options);
 
   return useQuery<{ categories: { data: Category[] } }, Error>(
     [API_ENDPOINTS.CATEGORIES, options],

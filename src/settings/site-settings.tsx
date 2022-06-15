@@ -57,7 +57,7 @@ export const siteSettings = {
           },
         ],
       },
-      {
+      /* {
         id: 3,
         path: '/search',
         label: 'menu-dietary',
@@ -83,7 +83,7 @@ export const siteSettings = {
             label: 'menu-organic',
           },
         ],
-      },
+      }, */
       {
         id: 4,
         path: '/search/',

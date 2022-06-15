@@ -19,12 +19,12 @@ const data = [
     id: 2,
     title: 'text-delivery-schedule',
     component: <DeliverySchedule />,
-  },
+  },/* 
   {
     id: 3,
     title: 'text-contact-number',
     component: <Contact />,
-  },
+  }, */
   {
     id: 4,
     title: 'text-payment-option',

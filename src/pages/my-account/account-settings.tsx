@@ -9,7 +9,7 @@ export default function AccountDetailsPage() {
   return (
     <>
       <Seo
-        title="Account Settings"
+        title="Configuración de la cuenta"
         description="Compra todo lo que tu negocio necesita al mejor precio y con la mejor calidad del mercado"
         path="my-account/account-settings"
       />

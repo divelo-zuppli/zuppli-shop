@@ -14,7 +14,8 @@ import CloseButton from '@components/ui/close-button';
 import { FaFacebook, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 import cn from 'classnames';
 
-import authService from '../../services/auth.service';
+import { loginWithEmail } from 'src/framework/basic-graphql/user/handle-user';
+
 
 import { GlobalContext } from '../../pages/_app';
 
@@ -53,16 +54,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ isPopup = true, className }) => {
     }
 
     try {
-        await authService.login({
+        await loginWithEmail({
             email,
             password,
         });
-
-        // setMessage(message);
     } catch (error) {
         setMessage(`error`);
     }
-    closeModal();
+    location.reload();
   }
 
   function handleSignUp() {

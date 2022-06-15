@@ -76,6 +76,10 @@ class AuthService {
     const { providerId } = userCredential;
 
     if (providerId) setFirebaseProviderId(providerId);
+
+    const { user } = userCredential;
+
+    return { user }
   }
 
   async loginWithGoogle() {
@@ -126,6 +130,7 @@ class AuthService {
   async logout() {
     const auth = getAuth(firebaseApp);
     Cookies.remove('auth_token');
+    Cookies.remove('auth_uid')
     if (auth.currentUser) await auth.signOut();
   }
 }

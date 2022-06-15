@@ -112,7 +112,7 @@ const Header: React.FC = () => {
             {/* End of conditional search  */}
 
             <div className="flex items-center ltr:ml-auto rtl:mr-auto shrink-0">
-              <Delivery />
+
               <div className="flex items-center w-0 py-4 overflow-hidden transition-all duration-200 ease-in-out opacity-0 navbar-right">
                 <button
                   type="button"

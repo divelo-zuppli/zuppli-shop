@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Input from '@components/ui/form/input';
 import PasswordInput from '@components/ui/form/password-input';
 import Button from '@components/ui/button';
 import { useForm } from 'react-hook-form';
 import Logo from '@components/ui/logo';
-import { useSignUpMutation, SignUpInputType } from '@framework/auth/use-signup';
 import Link from '@components/ui/link';
 import { useTranslation } from 'next-i18next';
 import Image from '@components/ui/image';
@@ -13,6 +12,8 @@ import Switch from '@components/ui/switch';
 import CloseButton from '@components/ui/close-button';
 import cn from 'classnames';
 import { ROUTES } from '@utils/routes';
+import { createUserWithEmail, SignUpInputType } from 'src/framework/basic-graphql/user/handle-user';
+import { useUI } from '@contexts/ui.context'
 
 interface SignUpFormProps {
   isPopup?: boolean;
@@ -24,9 +25,12 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
   className,
 }) => {
   const { t } = useTranslation();
-  const { mutate: signUp, isLoading } = useSignUpMutation();
   const { closeModal, openModal } = useModalAction();
-  const [remember, setRemember] = useState(false);
+  const { authorize } = useUI();
+/*   const [remember, setRemember] = useState(false); */
+
+const [isLoading, setIsLoading] = useState(false)
+
   const {
     register,
     handleSubmit,
@@ -39,14 +43,20 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
   function handleForgetPassword() {
     return openModal('FORGET_PASSWORD');
   }
-  function onSubmit({ name, email, password, remember_me }: SignUpInputType) {
-    signUp({
-      name,
+  function onSubmit({ fullName, email, password, phoneNumber }: SignUpInputType) {
+    setIsLoading(true)
+    createUserWithEmail({
+      fullName,
       email,
       password,
-      remember_me,
-    });
-    console.log(name, email, password, 'sign form values');
+      phoneNumber
+    }).then(() => {
+      authorize()
+      closeModal()
+      setIsLoading(false)
+    }).catch((error) => {
+      console.error(error)
+    })
   }
   return (
     <div
@@ -93,10 +103,10 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
                 label={t('forms:label-name')}
                 type="text"
                 variant="solid"
-                {...register('name', {
+                {...register('fullName', {
                   required: 'forms:name-required',
                 })}
-                error={errors.name?.message}
+                error={errors.fullName?.message}
               />
               <Input
                 label={t('forms:label-email')}
@@ -112,6 +122,19 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
                 })}
                 error={errors.email?.message}
               />
+              <Input
+                label={t('forms:label-phone')}
+                type="phone"
+                variant="solid"
+                {...register('phoneNumber', {
+                  required: `${t('forms:phone-required')}`,
+                  pattern: {
+                    value: /^\d{10}$/,
+                    message: t('forms:phone-error'),
+                  },
+                })}
+                error={errors.email?.message}
+              />
               <PasswordInput
                 label={t('forms:label-password')}
                 error={errors.password?.message}
@@ -120,7 +143,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
                 })}
               />
               <div className="flex items-center justify-center">
-                <div className="flex items-center shrink-0">
+{/*                 <div className="flex items-center shrink-0">
                   <label className="relative inline-block cursor-pointer switch">
                     <Switch checked={remember} onChange={setRemember} />
                   </label>
@@ -131,7 +154,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
                   >
                     {t('forms:label-remember-me')}
                   </label>
-                </div>
+                </div> */}
                 <div
                   className="flex ltr:ml-auto rtl:mr-auto mt-[2px]"
                   onClick={closeModal}

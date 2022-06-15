@@ -272,7 +272,7 @@ export default function ProductPopup() {
                   {t('text-add-to-cart')}
                 </Button>
                 <div className="grid grid-cols-2 gap-2.5">
-                  <Button
+{/*                   <Button
                     variant="border"
                     onClick={addToWishlist}
                     loading={addToWishlistLoader}
@@ -287,7 +287,7 @@ export default function ProductPopup() {
                     )}
 
                     {t('text-wishlist')}
-                  </Button>
+                  </Button> */}
                   <div className="relative group">
                     <Button
                       variant="border"
