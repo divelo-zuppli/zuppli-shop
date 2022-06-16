@@ -11,8 +11,8 @@ function SidebarMenuItem({ className, item, depth = 0 }: any) {
   const router = useRouter();
   const active = router?.query?.category;
   const isActive =
-    active === item.slug ||
-    item?.children?.some((_item: any) => _item.slug === active);
+    active === item.uid ||
+    item?.children?.some((_item: any) => _item.uid === active);
   const [isOpen, setOpen] = useState<boolean>(isActive);
   useEffect(() => {
     setOpen(isActive);
