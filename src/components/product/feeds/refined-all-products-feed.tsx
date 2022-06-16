@@ -36,7 +36,7 @@ const RefinedAllProductFeed: FC<ProductFeedProps> = ({ className = '' }) => {
   return (
     <div className={cn(className)}>
       <div className="xl:hidden flex items-center justify-between pb-0.5 mb-4 lg:mb-5 xl:mb-6">
-        <SectionHeader sectionHeading="All Products" className="mb-0" />
+        <SectionHeader sectionHeading="Todos los productos" className="mb-0" />
         <div
           className="transition-all text-brand -mt-1.5 font-semibold text-sm md:text-15px hover:text-brand-dark"
           role="button"
@@ -61,7 +61,8 @@ const RefinedAllProductFeed: FC<ProductFeedProps> = ({ className = '' }) => {
           ) : (
             <>
               {data?.pages?.map((page: any, index) => {
-                return (
+                return page?.data.length > 0
+                    ? (
                   <Fragment key={index}>
                     {page?.data
                       ?.slice(0, LIMITS.REFINED_PRODUCTS_LIMITS)
@@ -71,8 +72,12 @@ const RefinedAllProductFeed: FC<ProductFeedProps> = ({ className = '' }) => {
                           product={product}
                         />
                       ))}
-                  </Fragment>
-                );
+                  </Fragment> 
+                  ) : (
+                  <div>
+                    No hay productos en esta categoría
+                  </div>
+                    )
               })}
             </>
           )}
