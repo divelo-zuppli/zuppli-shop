@@ -72,7 +72,7 @@ class CategoryService {
         const parsedData = data.getAllCategories.map(category => {
             const children = category.children.map(child => {
                 return {
-                    id: child.uid,
+                    uid: child.uid,
                     name: child.name,
                     slug: child.slug,
                     parent: {
