@@ -17,7 +17,7 @@ function SidebarMenuItem({ className, item, depth = 0 }: any) {
   useEffect(() => {
     setOpen(isActive);
   }, [isActive]);
-  const { slug, name, children: items, icon } = item;
+  const { slug, name, children: items, icon, uid } = item;
   const { displaySidebar, closeSidebar } = useUI();
 
   function toggleCollapse() {
@@ -27,22 +27,22 @@ function SidebarMenuItem({ className, item, depth = 0 }: any) {
   function onClick() {
     if (Array.isArray(items) && !!items.length) {
       toggleCollapse();
-    } else {
-      const { pathname, query } = router;
-      const { type, ...rest } = query;
-      router.push(
-        {
-          pathname,
-          query: { ...rest, category: slug },
-        },
-        undefined,
-        {
-          scroll: false,
-        }
-      );
-      displaySidebar && closeSidebar();
     }
-  }
+
+    const { pathname, query } = router;
+    const { type, ...rest } = query;
+    router.push(
+      {
+        pathname,
+        query: { ...rest, category: uid },
+      },
+      undefined,
+      {
+        scroll: false,
+      }
+    );
+    displaySidebar && closeSidebar();
+    }
 
   let expandIcon;
   if (Array.isArray(items) && items.length) {
@@ -84,7 +84,7 @@ function SidebarMenuItem({ className, item, depth = 0 }: any) {
           <span className="ltr:ml-auto rtl:mr-auto">{expandIcon}</span>
         </button>
       </li>
-      {Array.isArray(items) && isOpen ? (
+      {Array.isArray(items) && items.length > 0 && isOpen ? (
         <li>
           <ul
             key="content"

@@ -10,7 +10,15 @@ type PaginatedProduct = {
 
 export const fetchProducts = async ({ queryKey }: any) => {
   const [_key, _params] = queryKey;
-  const data = await referenceService.getAll();
+
+  const isCategory = queryKey[1].category
+  let data = {}
+
+  if(isCategory) {
+    data = await referenceService.getProductsByCategory(queryKey[1].category);
+  } else {
+    data = await referenceService.getAll();
+  }
 
   return {
     data: data as Product[],
@@ -21,6 +29,7 @@ export const fetchProducts = async ({ queryKey }: any) => {
 };
 
 export const useProductsQuery = (options: QueryOptionsType) => {
+  // add validation to fetch specific category
   // console.log('options: ', options);
 
   return useInfiniteQuery<PaginatedProduct, Error>(

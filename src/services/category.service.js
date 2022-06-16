@@ -39,6 +39,7 @@ class CategoryService {
                 }
                 children {
                     id
+                    uid
                     name
                     slug
                     parent {
@@ -71,7 +72,7 @@ class CategoryService {
         const parsedData = data.getAllCategories.map(category => {
             const children = category.children.map(child => {
                 return {
-                    id: child.id,
+                    id: child.uid,
                     name: child.name,
                     slug: child.slug,
                     parent: {
@@ -88,7 +89,7 @@ class CategoryService {
             });
 
             return {
-                id: category.id,
+                uid: category.uid,
                 name: category.name,
                 slug: category.slug,
                 image: !category.categoryAttachments.length ? undefined : {
@@ -99,8 +100,6 @@ class CategoryService {
                 children,
             }
         });
-
-        // console.log('parsedData', parsedData);
 
         return parsedData;
     }
