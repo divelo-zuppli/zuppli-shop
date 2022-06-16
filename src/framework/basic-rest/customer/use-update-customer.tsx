@@ -1,14 +1,11 @@
 import { useMutation } from 'react-query';
 
 export interface UpdateUserType {
-  firstName: string;
-  lastName: string;
-  displayName: string;
+  name: string;
   phoneNumber: string;
   email: string;
   password: string;
   confirmPassword: string;
-  gender: string;
   shareProfileData: boolean;
   setAdsPerformance: boolean;
 }

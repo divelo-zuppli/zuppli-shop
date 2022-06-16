@@ -10,7 +10,7 @@ export default function AccountDetailsPage() {
 
   const { user } = useContext(GlobalContext)
   
-  fetchBusiness(user?authUid).then((data) => {
+  fetchBusiness(user?.authUid).then((data) => {
     setAddresses(data)
     setIsLoading(false)
   }).catch((error) => {

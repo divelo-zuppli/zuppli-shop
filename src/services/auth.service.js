@@ -119,6 +119,7 @@ class AuthService {
     }
 
     Cookies.set('auth_token', user.accessToken);
+    Cookies.set('auth_uid', user.uid)
 
     // console.log('LOGIN WITH GOOGLE RESULT', userCredential);
 

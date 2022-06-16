@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from '@components/ui/form/input';
 import PasswordInput from '@components/ui/form/password-input';
 import Button from '@components/ui/button';
@@ -11,26 +11,43 @@ import {
 import { useTranslation } from 'next-i18next';
 import Switch from '@components/ui/switch';
 import Text from '@components/ui/text';
-import { GlobalContext } from 'src/pages/_app';
-
-const defaultValues = {};
+import { getUser } from 'src/framework/basic-graphql/user/handle-user';
+import Cookies from 'js-cookie';
 
 const AccountDetails: React.FC = () => {
-  const { mutate: updateUser, isLoading } = useUpdateUserMutation();
+  const { mutate: updateUser } = useUpdateUserMutation();
   const { t } = useTranslation();
+  const [isLoading, setIsLoading] = useState(false)
+
+  const authUid = Cookies.get('auth_uid')
+
+  const defaultValues = {}
+    
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
+    reset
   } = useForm<UpdateUserType>({
     defaultValues,
   });
+
+  useEffect(() => {
+    getUser(authUid).then((user) => {
+      reset({
+        name: user?.user?.fullName,
+        phoneNumber: user?.user?.phoneNumber,
+        email: user?.user?.email,
+      })
+    }).catch((error) => {
+      console.error(error);
+    });
+  }, [reset])
+
   function onSubmit(input: UpdateUserType) {
     updateUser(input);
   }
-
-  const context = React.useContext(GlobalContext)
 
   return (
     <div className="flex flex-col w-full">
@@ -47,24 +64,14 @@ const AccountDetails: React.FC = () => {
             <div className="flex flex-col sm:flex-row -mx-1.5 md:-mx-2.5 space-y-4 sm:space-y-0">
               <Input
                 label={t('forms:label-first-name')}
-                {...register('firstName', {
+                {...register('name', {
                   required: 'forms:first-name-required',
                 })}
                 variant="solid"
                 className="w-full sm:w-1/2 px-1.5 md:px-2.5"
-                error={errors.firstName?.message}
+                error={errors.name?.message}
+                disabled
               />
-              <Input
-                label={t('forms:label-last-name')}
-                {...register('lastName', {
-                  required: 'forms:last-name-required',
-                })}
-                variant="solid"
-                className="w-full sm:w-1/2 px-1.5 md:px-2.5"
-                error={errors.lastName?.message}
-              />
-            </div>
-            <div className="flex flex-col sm:flex-row -mx-1.5 md:-mx-2.5 space-y-4 sm:space-y-0">
               <Input
                 type="tel"
                 label={t('forms:label-phone')}
@@ -124,7 +131,7 @@ const AccountDetails: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="relative flex pt-6 md:pt-8 lg:pt-10">
+        {/* <div className="relative flex pt-6 md:pt-8 lg:pt-10">
           <div className="ltr:pr-2.5 rtl:pl-2.5">
             <Heading className="mb-1 font-medium">
               {t('common:text-share-profile-data')}
@@ -163,7 +170,7 @@ const AccountDetails: React.FC = () => {
               )}
             />
           </div>
-        </div>
+        </div> */}
         <div className="relative flex pb-2 mt-5 sm:ltr:ml-auto sm:rtl:mr-auto lg:pb-0">
           <Button
             type="submit"
